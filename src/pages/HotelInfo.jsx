@@ -1,5 +1,5 @@
 import React from 'react'
-import { useQuery } from 'react-query';
+// import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { getHotelBySlug } from '../api/request';
 import NavBar from '../components/NavBar';
@@ -12,7 +12,8 @@ export default function HotelInfo() {
         console.log("slug Data", data);
         return data;
     };
-    const {isLoading, data} = useQuery('hotel-slug', fetchHotelData)
+    fetchHotelData();
+    // const {isLoading, data} = useQuery('hotel-slug', fetchHotelData)
   return (
     <>
         <NavBar/>
