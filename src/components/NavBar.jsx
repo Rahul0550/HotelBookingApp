@@ -78,7 +78,6 @@ export default function NavBar({ hotels=[], setHotels, originalHotels=[] }) {
                 onClick={() => navigate("/")}
                 sx={{ cursor: "pointer" }}
                 fontSize="16px"
-                onclick={() => navigate("/")}
                 variant="h6"
                 color="black"
                 fontWeight="bold"
