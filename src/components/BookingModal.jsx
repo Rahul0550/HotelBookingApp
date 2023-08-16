@@ -41,6 +41,46 @@ export default function BookingModal({ open, handleClose, data }) {
     return Number(data?.rooms[0].content.split(' ')[0]);
   };
 
+  const submitButton = async () => {
+
+    const start = new Date(dates[0].startDate);
+    const end = new Date(dates[0].endDate);
+    const diffDays = getTotalNights();
+
+    const details = JSON.stringify({
+      hotelName: data.name,
+      hotelAddress: data.address,
+      numberOfGuests: selectedCount,
+      price :  `$${data.pricePerNight * diffDays}`,
+      checkin: start.toISOString(),//done
+      checkout: end.toISOString(),//done
+      
+    });
+
+    console.log('details', details);
+
+    //fetch 
+    try {
+      const response = await fetch(
+        "https://hotelbookingapp-e0a8e-default-rtdb.firebaseio.com/hotel.json",
+        {
+          method: "POST",
+          body: details,
+        }
+      );
+
+      if (response.ok) {
+        console.log("Booking successful!");
+        
+      } else {
+        console.error("Booking failed.");
+      }
+    } catch (error) {
+      console.error("Error during booking:", error);
+    }
+  };
+
+
   return (
     <Modal open={open} onClose={handleClose}>
       <Box
@@ -103,7 +143,7 @@ export default function BookingModal({ open, handleClose, data }) {
           Subtotal : ${data?.pricePerNight * getTotalNights()} nights
         </Typography>
 
-        <Button variant="outlined" sx={{ width: "100%", marginTop: "10px" }}>
+        <Button variant="outlined" sx={{ width: "100%", marginTop: "10px" }} onClick={submitButton}>
           Reserve
         </Button>
       </Box>

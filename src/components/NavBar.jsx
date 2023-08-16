@@ -85,7 +85,9 @@ export default function NavBar({ hotels=[], setHotels, originalHotels=[] }) {
                 Home
               </Typography>
               <IconButton size="small">
-                <Avatar sx={{ width: 32, height: 32 }}>R</Avatar>
+                <Avatar sx={{ width: 32, height: 32 }} onClick={()=>navigate("/bookingHistory")}>
+                {/* <a href="/bookingHistory" >R</a> */}
+                </Avatar>
               </IconButton>
             </Box>
           </Toolbar>
