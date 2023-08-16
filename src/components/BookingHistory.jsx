@@ -42,7 +42,7 @@ export default function BookingHistory() {
       <Typography variant="h4" gutterBottom sx={{margin: "2% 40%"}}>
         Booking History
       </Typography>
-      <TableContainer component={Paper} sx={{width: "80%", margin:"5em 15em "}}>
+      <TableContainer component={Paper} sx={{width: "80%", margin:"0 5% "}}>
         <Table aria-label="booking history table">
           <TableHead>
             <TableRow>
