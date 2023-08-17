@@ -5,6 +5,8 @@ import {
   Box,
   Container,
   IconButton,
+  Menu,
+  MenuItem,
   TextField,
   Toolbar,
   Typography,
@@ -15,6 +17,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 export default function NavBar({ hotels=[], setHotels, originalHotels=[] }) {
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState("");
+  const [menuAnchor, setMenuAnchor] = useState(null);
 
   const handleSearch = () => {
     const filteredHotels = hotels.filter(
@@ -23,6 +26,14 @@ export default function NavBar({ hotels=[], setHotels, originalHotels=[] }) {
         hotel.name.toLowerCase().includes(searchValue.toLowerCase())
     );
     setHotels(filteredHotels);
+  };
+
+  const handleMenuOpen = (event) => {
+    setMenuAnchor(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setMenuAnchor(null);
   };
 
   return (
@@ -85,9 +96,23 @@ export default function NavBar({ hotels=[], setHotels, originalHotels=[] }) {
                 Home
               </Typography>
               <IconButton size="small">
-                <Avatar sx={{ width: 32, height: 32 }} onClick={()=>navigate("/bookingHistory")}>
+                <Avatar sx={{ width: 32, height: 32 }} onClick={handleMenuOpen} >
                 {/* <a href="/bookingHistory" >R</a> */}
                 </Avatar>
+                <Menu
+                  anchorEl={menuAnchor}
+                  open={Boolean(menuAnchor)}
+                  onClose={handleMenuClose}
+                >
+                  {/* "Sign In / Sign Up" option */}
+                  <MenuItem onClick={() => navigate("/signIn")}>
+                    Sign In / Sign Up
+                  </MenuItem>
+                  {/* "Booking History" option */}
+                  <MenuItem onClick={() => navigate("/bookingHistory")}>
+                    Booking History
+                  </MenuItem>
+                </Menu>
               </IconButton>
             </Box>
           </Toolbar>

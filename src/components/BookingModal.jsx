@@ -1,6 +1,7 @@
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import { useNavigate } from "react-router-dom";
 
 import {
   Box,
@@ -15,6 +16,7 @@ import {
 import React, { useState } from "react";
 
 export default function BookingModal({ open, handleClose, data }) {
+  const navigate = useNavigate();
   const [selectedCount, setSelectedCount] = useState(2);
   const today = new Date();
   const tomorrow = new Date();
@@ -78,6 +80,8 @@ export default function BookingModal({ open, handleClose, data }) {
     } catch (error) {
       console.error("Error during booking:", error);
     }
+  navigate("/bookingHistory")
+
   };
 
 
