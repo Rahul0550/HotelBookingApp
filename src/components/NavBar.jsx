@@ -105,7 +105,7 @@ export default function NavBar({ hotels=[], setHotels, originalHotels=[] }) {
                   onClose={handleMenuClose}
                 >
                   {/* "Sign In / Sign Up" option */}
-                  <MenuItem onClick={() => navigate("/signIn")}>
+                  <MenuItem onClick={() => navigate("/login")}>
                     Sign In / Sign Up
                   </MenuItem>
                   {/* "Booking History" option */}
