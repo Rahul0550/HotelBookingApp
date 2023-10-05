@@ -78,7 +78,7 @@ export default function HotelInfo() {
                 <ListItem key={feature.id}>{feature.text}</ListItem>
               ))}
             </Box>
-            <Button onClick={handleOpen} variant="outlined">Reverse</Button>
+            <Button onClick={handleOpen} variant="outlined">Reserve</Button>
           </Box>
 
           <BookingModal data={data} open={open} handleClose={handleClose} />
